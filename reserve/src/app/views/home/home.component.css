@@ -1,4 +1,109 @@
+.home-container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .example-card {
   max-width: 400px;
   margin-bottom: 8px;
+}
+
+.title {
+  width: 75%;
+  padding: 20px;
+  font-size: 30px;
+}
+
+.login-margin {
+  padding: 20px;
+  width: 25%;
+  font-size: 22px;
+}
+
+.options-card {
+  height: 600px;
+  background-color: purple;
+}
+
+.option-card {
+  height: 250px;
+  width: 332px;
+  background-color: #e0e1e2;
+  border-radius: 5%;
+  display: inline-block;
+  margin-right: 32px;
+  position: relative;
+}
+
+.footer {
+  height: 150px;
+  background-color: green;
+}
+
+.map-card {
+  height: 400px;
+  background-color: yellow;
+}
+
+.top-menu {
+  display: inline-flex;
+  height: 40px;
+  width: 100%;
+  font-family: "Impact";
+  color: green;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.container {
+  background-color: blue;
+
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.cards {
+  width: 100%;
+  overflow: hidden;
+}
+
+.overflow {
+  position: relative;
+  transition: left 0.5s ease-in-out;
+}
+
+.card {
+  height: 200px;
+  background-color: #e0e1e2;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 20px;
+  position: relative;
+}
+
+.no-right-margin {
+  margin-right: 0px;
+}
+
+.card span {
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left,
+.right {
+  margin-top: 90px;
+  cursor: pointer;
+}
+
+.left.disabled,
+.right.disabled {
+  color: #ccc;
 }

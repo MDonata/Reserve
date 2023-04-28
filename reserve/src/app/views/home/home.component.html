@@ -1,20 +1,48 @@
 <div>
-  <div>
-    <span>Reservê</span>
-  </div>
-  <div>
-    <!--  <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title-group>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Extra large</mat-card-subtitle>
-          <img
-            mat-card-xl-image
-            src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          />
-        </mat-card-title-group>
-      </mat-card-header>
-      <mat-card-content> aaaa </mat-card-content>
-    </mat-card> -->
+  <div class="home-container">
+    <div class="top-menu">
+      <div class="title"><span>Reservê</span></div>
+      <div class="login-margin" fxLayoutGap="74px">
+        <span>Login</span>
+        <span>Cadastre-se</span>
+      </div>
+    </div>
+    <div class="container" #container>
+      <mat-icon
+        class="left"
+        *ngIf="totalPages > 1"
+        (click)="currentPage != 1 && changePage(-1)"
+        [ngClass]="{ disabled: currentPage === 1 }"
+        >arrow_back_ios</mat-icon
+      >
+      <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
+        <div
+          class="overflow"
+          [ngStyle]="{ width: overflowWidth, left: pagePosition }"
+        >
+          <div
+            class="card"
+            *ngFor="let i of arr; let index = index"
+            [ngStyle]="{ width: cardWidth }"
+          >
+            <span>{{ i }}</span>
+          </div>
+        </div>
+      </div>
+      <mat-icon
+        class="right"
+        *ngIf="totalPages > 1"
+        (click)="currentPage != totalPages && changePage(+1)"
+        [ngClass]="{ disabled: currentPage === totalPages }"
+        >arrow_forward_ios</mat-icon
+      >
+    </div>
+    <div class="map-card"></div>
+    <div class="options-card">
+      <div class="option-card" *ngFor="let i of optionsArr; let index = index">
+        <span>{{ i }}</span>
+      </div>
+    </div>
+    <div class="footer"></div>
   </div>
 </div>
