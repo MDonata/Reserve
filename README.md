@@ -1,6 +1,6 @@
-<h1 align="center">Reservê</h1>
+<h1 style="font-family: 'Island Moments', cursive; font-size: 50px; color:#C38D00; padding: 0; margin-bottom: 0;">Reserve</h1>   
 
-# Escopo
+<h2>Escopo</h2>
 
 
 O Reservê consiste em um aplicativo de reservas de quadras de esportes variados, como futebol, basquete, volei, volei de areia e entre outros. O sistema oferece ao usuario um informações sobre a disponibilidade, a localização, os preços dos alugueis, informações sobre arquibancada, bares na região e telefone da quadra, para que o usuario possa ter a certeza de que está escolhendo o lugar certo.
