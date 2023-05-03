@@ -20,13 +20,12 @@
           class="overflow"
           [ngStyle]="{ width: overflowWidth, left: pagePosition }"
         >
-          <div
-            class="card"
+          <img
             *ngFor="let i of arr; let index = index"
+            class="card"
             [ngStyle]="{ width: cardWidth }"
-          >
-            <span>{{ i }}</span>
-          </div>
+            [src]="i"
+          />
         </div>
       </div>
       <mat-icon
@@ -38,11 +37,20 @@
       >
     </div>
     <div class="map-card"></div>
-    <div class="options-card">
-      <div class="option-card" *ngFor="let i of optionsArr; let index = index">
-        <span>{{ i }}</span>
-      </div>
+    <div class="options-card-title">Perto de Você:</div>
+    <div class="options-card" fxLayoutGap="30px">
+      <span class="imgTitle" *ngFor="let i of optionsArr; let index = index">
+        <img class="option-card" [src]="i.path" />
+        <span class="imageTitle">{{ i.title }}</span>
+      </span>
     </div>
+    <div class="options-card" fxLayoutGap="30px">
+      <span class="imgTitle" *ngFor="let i of optionsArr2; let index = index">
+        <img class="option-card" [src]="i.path" />
+        <span class="imageTitle">{{ i.title }}</span>
+      </span>
+    </div>
+
     <div class="footer"></div>
   </div>
 </div>

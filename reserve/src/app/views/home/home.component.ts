@@ -22,8 +22,57 @@ export class HomeComponent implements OnInit {
 
   constructor() {}
 
-  arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-  optionsArr: number[] = [1, 2, 3, 4];
+  arr: string[] = [
+    'https://cdn-icons-png.flaticon.com/512/756/756812.png',
+    'https://cdn-icons-png.flaticon.com/512/3379/3379077.png',
+    'https://cdn-icons-png.flaticon.com/512/1590/1590970.png',
+    'https://cdn-icons-png.flaticon.com/512/195/195559.png',
+    'https://cdn-icons-png.flaticon.com/512/5288/5288453.png',
+    'https://cdn.iconscout.com/icon/free/png-256/basketball-nba-court-ground-olympic-game-sport-6-25652.png',
+    'https://cdn-icons-png.flaticon.com/512/4500/4500081.png',
+    'https://cdn-icons-png.flaticon.com/512/186/186192.png',
+    'https://cdn-icons-png.flaticon.com/512/3787/3787310.png',
+    'https://img.freepik.com/icones-gratis/boliche_318-196431.jpg',
+    'https://cdn-icons-png.flaticon.com/512/566/566283.png',
+    'https://cdn-icons-png.flaticon.com/512/195/195132.png',
+    'https://img.freepik.com/icones-gratis/patim_318-317248.jpg',
+  ];
+  optionsArr = [
+    {
+      path: 'https://ecrie.com.br/sistema/conteudos/imagem/g_119_2_3_15022023204129.jpeg',
+      title: 'Quadra de Futebol',
+    },
+    {
+      path: 'https://www.recoma.com.br/blog/wp-content/uploads/2023/02/quadra-de-futsal-qual-o-melhor-piso-esportivo.jpg',
+      title: 'Quadra de Poliesportiva',
+    },
+    {
+      path: 'https://psdovidro.com.br/wp-content/uploads/2015/10/estudio-3.jpg',
+      title: 'Salão de Dança',
+    },
+    {
+      path: 'https://www.adec.com.br/admin/image/reserva_area/9/42lg.jpg',
+      title: 'Quadra de Vôlei de Areia',
+    },
+  ];
+  optionsArr2 = [
+    {
+      path: 'https://media.imperatriz.ma.gov.br/N8hB0ccJumWbIFR4WaXquGgCLAg=/750x0/novo.imperatriz.ma.gov.br/media/site/content/article/WhatsApp_Image_2021-01-28_at_16.52.32.jpeg',
+      title: 'Quadra de Badminton',
+    },
+    {
+      path: 'https://www.sescpr.com.br/wp-content/uploads/2020/11/20201001_173756.jpg',
+      title: 'Quadra de Basquete',
+    },
+    {
+      path: 'https://resinsa.com.br/wp-content/uploads/Foto-8-%E2%80%93-Pista-de-atletismo-Sandwich-System.png',
+      title: 'Pista de Corrida',
+    },
+    {
+      path: 'https://www.pardinisport.com.br/img/servicos/quadra-de-volei.jpg',
+      title: 'Quadra de Vôlei',
+    },
+  ];
   totalCards: number = this.arr.length;
   currentPage: number = 1;
   pagePosition: string = '0%';

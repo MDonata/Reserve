@@ -21,8 +21,19 @@
 }
 
 .options-card {
-  height: 600px;
+  text-align: center;
+  align-items: center;
+  height: 270px;
   background-color: purple;
+  position: relative;
+}
+
+.options-card-title {
+  font-size: 26px;
+  margin-left: 20px;
+  padding: 20px;
+  font-family: "Impact";
+  color: green;
 }
 
 .option-card {
@@ -31,8 +42,8 @@
   background-color: #e0e1e2;
   border-radius: 5%;
   display: inline-block;
-  margin-right: 32px;
   position: relative;
+  box-shadow: 0 8px 6px -6px black;
 }
 
 .footer {
@@ -59,9 +70,7 @@
 
 .container {
   background-color: blue;
-
   display: flex;
-  position: relative;
   justify-content: center;
   margin-top: 40px;
 }
@@ -76,9 +85,25 @@
   transition: left 0.5s ease-in-out;
 }
 
+.imageTitle {
+  position: absolute;
+  bottom: 40px;
+  left: 30px;
+  z-index: 10;
+  font-size: 20px;
+  font-weight: 400px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.imgTitle {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
 .card {
   height: 200px;
-  background-color: #e0e1e2;
   border-radius: 50%;
   display: inline-block;
   margin-right: 20px;
