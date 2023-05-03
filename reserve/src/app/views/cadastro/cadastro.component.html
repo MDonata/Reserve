@@ -1,1 +1,62 @@
-<p>cadastro works!</p>
+<script src="https://kit.fontawesome.com/61f3bf8573.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="cadastro.component.css">
+
+<nav class="bar"> 
+    <div class="titulo">
+       <h2>Reserve</h2> 
+    </div>
+    <div class="pesquisa ">
+        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        <input placeholder="Pesquisar por quadras">
+    </div>
+    <div class="locali ">
+        <i class="fa-solid fa-location-dot"></i>
+        <p>localização</p>
+    </div>
+    <div class="telaLogin">
+       <button class="login">Login</button><button id="cadastrar" class="cadastrar">Cadastrar</button>
+    </div>
+</nav> 
+
+<dialog open> 
+    <button id="fechar">
+        <i class="fa-solid fa-xmark"></i>
+    </button> 
+    <form action="# " id="form">      
+
+    <div class="titulo">
+        <h2 style="font-family: 'Island Moments', cursive; font-size: 50px; color:#C38D00; padding: 0; margin-bottom: 0;">Reserve</h2>   
+    </div> 
+    <h2>Criar Conta</h2>
+   
+    <div class="userTela ">
+        <i class="fa-solid fa-user"></i> 
+        <label  for="nome">Nome</label>
+        <input class='barraIn' placeholder='Coleque seu Nome' type="text" id="nome" data-required>
+        
+    </div>
+
+    <div class="userTela">
+         <i class="fa-solid fa-envelope"></i> 
+        <label  for="email">Email</label> 
+        <input class='barraIn' placeholder='Coleque seu Email' type="text" id="email" data-required>
+    </div>
+    
+    <div class="userTela">
+        <i class="fa-sharp fa-solid fa-key"></i>
+        <label for="senha">Senha</label>
+        <input class='barraIn' placeholder='Coloque sua Senha'  type="password" id="senha" data-min-length ='8' data-required>
+        
+    </div>  
+
+    <div class="userTela"> 
+        <i class="fa-sharp fa-solid fa-key"></i>
+        <label  for="senha">Confirmar senha</label>
+        <input class='barraIn' placeholder='Confirme sua Senha' type="password" id="senhaCon" data-required>
+    </div>
+        <button id="submit" class="botao" type="submit">Criar conta</button>
+    <div class="jaTemlogin">
+        <p>Já tem Login?<a href=""> Faça login!</a></p>
+    </div>
+</form> 
+</dialog>

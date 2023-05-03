@@ -1,1 +1,29 @@
-<p>login works!</p>
+<link rel="stylesheet" href="login.component.css">
+<script src="https://kit.fontawesome.com/61f3bf8573.js" crossorigin="anonymous"></script>
+<main>
+<dialog open>
+    <div class="container">   
+        <h2 style="font-family: 'Island Moments', cursive; font-size: 50px; color:#C38D00; padding: 0; margin-bottom: 0;">Reserve</h2>   
+        <h2>Fazer login</h2>
+       <form action="" id="logIn"> 
+            <div class="userTela">
+               <span> <i class="fa-solid fa-user"></i></span>
+                <label  for="email"></label>
+                <input placeholder='Coleque seu Email' type="email" id="email" required>
+            </div>
+            <div class="userTela">
+                <i class="fa-solid fa-lock"></i>
+                <label for='senha'></label>
+                <input placeholder='Coloque sua Senha' id ='senha' type="password" required >
+            </div>
+    
+            <a href="#" class="esqucisenha">Esqueci minha senha</a>
+        <div class="botao"> 
+            <button class="teste1"><a href="/TelaDeCadastro/index.html">Criar conta</a></button>
+            <button id='avan' class="teste" type="submit">Login</button>
+        </div>
+        <p class="error-validation template"></p>
+     </form> 
+    </div>
+</dialog>
+</main>

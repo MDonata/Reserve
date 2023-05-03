@@ -24,7 +24,6 @@
   text-align: center;
   align-items: center;
   height: 270px;
-  background-color: purple;
   position: relative;
 }
 
@@ -53,7 +52,6 @@
 
 .map-card {
   height: 400px;
-  background-color: yellow;
 }
 
 .top-menu {
@@ -69,7 +67,6 @@
 }
 
 .container {
-  background-color: blue;
   display: flex;
   justify-content: center;
   margin-top: 40px;
