@@ -5,6 +5,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   prev = document.getElementById('prev');
   width = this.carousel?.offsetWidth;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   arr: string[] = [
     'https://cdn-icons-png.flaticon.com/512/756/756812.png',
@@ -123,5 +125,26 @@ export class HomeComponent implements OnInit {
     this.pagePosition = `calc(${-100 * (this.currentPage - 1)}% - ${
       10 * (this.currentPage - 1)
     }px)`;
+  }
+
+  openLoginDialog(){
+    this.dialog.open(LoginComponent, {
+      data: { isCadastro: false },
+      height: '450px',
+      width: '800px',
+    });
+
+    /* dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    }); */
+  }
+
+  openCadastroDialog(){
+    this.dialog.open(LoginComponent, {
+      data: { isCadastro: true },
+      height: '450px',
+      width: '800px',
+    });
   }
 }

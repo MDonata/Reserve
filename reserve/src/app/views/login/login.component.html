@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="login-container" fxLayout="row">
+    <div class="cabecalho" fxLayoutAlign="center center">
+        <div class="center-div" fxLayout="column" fxLayoutAlign="space-around center">
+            <span class="title">Reservê</span>
+            <span class="sub-title poppins-font">Bem-vindo!</span>
+            <span class="poppins-font">{{ data.isCadastro ? 'Acesse sua conta' : 'Ainda não possui conta?' }}</span>
+            <button mat-stroked-button class="login-button">{{ data.isCadastro ? 'ENTRAR' : 'CADASTRE-SE' }}</button>
+        </div>
+    </div>
+    <div class="campos"  fxLayoutAlign="center center">
+        <div fxLayout="column" fxLayoutAlign="space-around center">
+            <span class="poppins-font sub-title">{{ data.isCadastro ? 'Crie sua conta' : 'Faça login' }}</span>  
+            <div class="input-fields" fxLayout="column">      
+                <mat-form-field *ngIf="data.isCadastro">
+                    <mat-label>Nome</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Senha</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <button mat-stroked-button class="cadastro-button">{{ data.isCadastro ? 'CADASTRAR' : 'ENTRAR' }}</button>
+        </div>
+    </div>
+</div>

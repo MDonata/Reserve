@@ -1,0 +1,60 @@
+.cabecalho{
+    width: 35%;
+    height: 100%;
+    background-color: green;
+    color: white;
+}
+
+.center-div{
+    height: 70%;
+}
+
+.title {
+    font-size: 36px;
+    font-family: "Impact";
+    font-weight: 100;
+    padding-bottom: 20px;
+}
+
+.input-fields{
+    padding-top: 40px;
+    padding-bottom: 50px;
+    width: 330px;
+}
+
+.sub-title {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.campos{
+    width: 65%;
+    height: 100%;
+    color: green;
+}
+
+.login-container{
+    width: 100%;
+    height: 100%;
+}
+
+::ng-deep .mat-dialog-container{
+    padding: 0px !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.cadastro-button{
+    background-color: green;
+    color: white;
+}
+
+.mat-stroked-button {
+    padding: 10px 56px!important;
+    border-width:0!important;
+    border-color:transparent!important;
+    box-shadow:inset 0px 0px 0px 2px  currentColor!important;
+    border-radius:36px!important;
+    font-weight: 500;
+}
+

@@ -64,6 +64,13 @@
   color: green;
 }
 
+.impact-text{
+  font-family: "Impact";
+  color: green;
+  font-size: 22px;
+
+}
+
 .w-100 {
   width: 100% !important;
 }
