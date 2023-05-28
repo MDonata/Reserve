@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
+  mapa: string = 'https://i.blogs.es/09af6a/google_maps/840_560.jpg'
   arr: string[] = [
     'https://cdn-icons-png.flaticon.com/512/756/756812.png',
     'https://cdn-icons-png.flaticon.com/512/3379/3379077.png',
@@ -113,7 +114,7 @@ export class HomeComponent implements OnInit {
   }
 
   getCardsPerPage() {
-    return Math.floor(this.container.nativeElement.offsetWidth / 200);
+    return Math.floor(this.container.nativeElement.offsetWidth / 170);
   }
 
   changePage(incrementor: any) {

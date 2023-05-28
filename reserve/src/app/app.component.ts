@@ -11,6 +11,6 @@ export class AppComponent {
   title = 'reserve';
 
   ngOnInit() {
-    this.router.navigateByUrl('home');
+    //this.router.navigateByUrl('home');
   }
 }

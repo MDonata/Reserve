@@ -1,7 +1,11 @@
 <div>
   <div class="home-container">
-    <div class="top-menu">
+    <div class="top-menu" fxLayoutAlign="space-around center">
       <div class="title"><span>Reservê</span></div>
+      <div> 
+        <input type="text">
+        <mat-icon class="search-bar">search</mat-icon>
+      </div>
       <div class="login-margin" fxLayoutGap="74px">
         <button class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
         <button class="impact-text" mat-button (click)="openCadastroDialog()">Cadastre-se</button>
@@ -36,7 +40,19 @@
         >arrow_forward_ios</mat-icon
       >
     </div>
-    <div class="map-card"></div>
+    <div class="map-card" fxLayoutAlign="space-around center">
+      <span class="map-info" fxLayout="column" fxLayoutAlign="space-around center">
+        <span fxLayoutAlign="center center center" fxLayout="row">
+          <span class="map-title">Na sua cidade</span>
+          <span fxLayoutAlign="center center center" fxLayout="row">
+            <span class="material-icons place-icon">place</span>
+            <span class="poppins-font map-city">Belo Horizonte</span>
+            <span class="material-icons expand-icon">expand_more</span>
+          </span>
+        </span>
+        <img [src]="mapa" width="700" height="400"/>
+      </span>
+    </div>
     <div class="options-card-title">Perto de Você:</div>
     <div class="options-card" fxLayoutGap="30px">
       <span class="imgTitle" *ngFor="let i of optionsArr; let index = index">
@@ -51,6 +67,26 @@
       </span>
     </div>
 
-    <div class="footer"></div>
+    <div class="footer" fxLayout="row">
+      <div class="footer-logo">Reservê</div>
+      <div class="footers-divs" fxLayout="row">
+        <div class="footer-div" fxLayout="column">
+          <span class="footer-div-title">Início</span>
+          <span>Home</span>
+          <span>Quadras</span>
+        </div>
+        <div class="footer-div" fxLayout="column">
+          <span class="footer-div-title">Sobre nós</span>
+          <span>+Informações</span>
+          <span>Contato</span>
+          <span>GitHub</span>
+        </div>
+        <div class="footer-div" fxLayout="column">
+          <span class="footer-div-title">Desenvolvedores</span>
+          <span>Marcela</span>
+          <span>Bruno</span>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,85 @@
+.home-container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.title {
+    font-size: 30px;
+  }
+  
+.top-menu {
+    display: inline-flex;
+    height: 70px;
+    width: 100%;
+    font-family: "Impact";
+    color: green;
+    background-color: aqua;
+}
+
+.login-margin {
+    font-size: 22px;
+}
+
+.impact-text{
+    font-family: "Impact";
+    color: green;
+    font-size: 22px;
+}
+
+.search-field{
+    width: 500px;
+  }
+
+  .reserva-imagens{
+    margin: 40px;
+  }
+
+input {
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    height: 25px;
+    padding: 5px;
+    width: 500px;
+  }
+
+.search-bar {
+    position: relative;
+    top: 8px;
+    right: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+    color: black;
+}
+
+.footer {
+    height: 150px;
+    background-color: green;
+    width: 100%;
+}
+
+.footer-logo{
+    width: 40%;
+    font-family: "Impact";
+    font-size: 40px;
+    color: white;
+    padding-top: 40px;
+    padding-left: 100px;
+
+}
+
+.footers-divs{
+    width: 60%; 
+}
+
+.footer-div{
+    color: white;
+    padding-top: 30px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.footer-div-title{
+    font-weight: 500;
+    font-size: 16px;
+}

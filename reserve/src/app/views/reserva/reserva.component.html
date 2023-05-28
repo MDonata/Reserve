@@ -1,1 +1,42 @@
-<p>reserva works!</p>
+<div>
+    <div class="home-container">
+      <div class="top-menu" fxLayoutAlign="space-around center">
+        <div class="title"><span>Reservê</span></div>
+        <div> 
+          <input type="text">
+          <mat-icon class="search-bar">search</mat-icon>
+        </div>
+        <div class="login-margin" fxLayoutGap="74px">
+          <button class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
+          <button class="impact-text" mat-button (click)="openCadastroDialog()">Cadastre-se</button>
+        </div>
+      </div>
+      <div class="reserva-imagens" fxLayoutGap="20px">
+       <!--  <img [src]="imagens[0]" width="600" height="400"/>
+        <img [src]="imagens[1]" width="300" height="200"/>
+        <img [src]="imagens[2]" width="300" height="200"/> -->
+      </div>
+      <div class="footer" fxLayout="row">
+        <div class="footer-logo">Reservê</div>
+        <div class="footers-divs" fxLayout="row">
+          <div class="footer-div" fxLayout="column">
+            <span class="footer-div-title">Início</span>
+            <span>Home</span>
+            <span>Quadras</span>
+          </div>
+          <div class="footer-div" fxLayout="column">
+            <span class="footer-div-title">Sobre nós</span>
+            <span>+Informações</span>
+            <span>Contato</span>
+            <span>GitHub</span>
+          </div>
+          <div class="footer-div" fxLayout="column">
+            <span class="footer-div-title">Desenvolvedores</span>
+            <span>Marcela</span>
+            <span>Bruno</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
