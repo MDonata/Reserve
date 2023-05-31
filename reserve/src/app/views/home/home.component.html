@@ -1,10 +1,10 @@
 <div>
   <div class="home-container">
     <div class="top-menu" fxLayoutAlign="space-around center">
-      <div class="title"><span>Reservê</span></div>
+      <div class="title" (click)="homeNavigate()"><span>Reservê</span></div>
       <div> 
-        <input type="text">
-        <mat-icon class="search-bar">search</mat-icon>
+        <input type="text" [(ngModel)]="searchText" class="search-input">
+        <mat-icon class="search-bar" (click)="searchNavigate()">search</mat-icon>
       </div>
       <div class="login-margin" fxLayoutGap="74px"  fxLayout="row">
         <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
@@ -27,10 +27,11 @@
           [ngStyle]="{ width: overflowWidth, left: pagePosition }"
         >
           <img
-            *ngFor="let i of arr; let index = index"
+            *ngFor="let i of sliderArray; let index = index"
             class="card"
             [ngStyle]="{ width: cardWidth }"
-            [src]="i"
+            [src]="i.path"
+            (click)="sliderNavigate(i.tipo)"
           />
         </div>
       </div>

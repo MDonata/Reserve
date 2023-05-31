@@ -1,12 +1,12 @@
 <div>
     <div class="home-container">
         <div class="top-menu" fxLayoutAlign="space-around center">
-            <div class="title"><span>Reservê</span></div>
+            <div class="title" (click)="homeNavigate()"><span>Reservê</span></div>
             <div> 
-              <input type="text" class="input">
-              <mat-icon class="search-bar">search</mat-icon>
+              <input type="text" [(ngModel)]="searchText" class="search-input">
+              <mat-icon class="search-bar" (click)="searchNavigate()">search</mat-icon>
             </div>
-            <div class="login-margin" fxLayoutGap="74px" fxLayout="row">
+            <div class="login-margin" fxLayoutGap="74px"  fxLayout="row">
               <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
                 <mat-icon class="material-icons">person</mat-icon><span>{{ usuario }}</span></span>
               <button *ngIf="!usuario" class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
@@ -30,7 +30,6 @@
                         <mat-label>Cidade</mat-label>
                         <select matNativeControl>
                             <option value="bh">Belo Horizonte</option>
-                            <option value="sl">Santa Luzia</option>
                         </select>
                     </mat-form-field>
                     <mat-form-field>
@@ -39,21 +38,36 @@
                             <option value="1">Futsal</option>
                             <option value="2">Poliesportiva</option>
                             <option value="3">Futebol</option>
-                            <option value="3">Vôlei</option>
+                            <option value="4">Vôlei</option>
                         </select>
                     </mat-form-field>
-                    <span>Preço máx e min</span>
-                    <span>{{sliderStart}}</span>
-                    <span>{{sliderEnd}}</span>
-                    <mat-slider min="0" max="1000">
-                        <input value="0" matSliderStartThumb [(ngModel)]="sliderStart">
-                        <input value="800" matSliderEndThumb [(ngModel)]="sliderEnd">
-                    </mat-slider>
+                    <mat-form-field>
+                        <mat-label>Preço Mínimo</mat-label>
+                        <input type="number" matInput placeholder="0" value="0">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Preço Máximo</mat-label>
+                        <input type="number" matInput placeholder="1000" value="1000">
+                    </mat-form-field>
                 </div>
               </div>
             </div>
             <div class="div-right">
-              <div class="" fxLayout="column">
+              <div fxLayout="column">
+                <div class="info-card-title poppins-font"> Você pesquisou por: {{ currentSearchText }} </div>
+                <br/>
+                <div class="quadras-padding" *ngFor="let quadra of quadras; let index = index" fxLayout="row">
+                    <img class="img-card" [src]="quadra.imgPrincipal" width="350" height="237"/>
+                    <div class="info-card" fxLayout="column">
+                        <span class="info-card-title poppins-font">{{ title[index] }}</span>
+                        <span>{{ quadra.endereco }}</span>
+                        <br/>
+                        <span class="desc">{{ quadra.descricao }}</span>
+                        <span class="preco poppins-font">R${{ quadra.precoHora }} por hora</span>
+                        <button mat-raised-button class="moreInfo" (click)="showReserva(quadra.id)">+Informações</button>
+                    </div>
+                </div>
+                <div *ngIf="!quadras.length" class="info-card-title poppins-font"> -> Não foram encontradas quadras para esta pesquisa. </div>
               </div>
             </div>
           </div>

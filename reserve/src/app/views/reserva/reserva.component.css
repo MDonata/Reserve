@@ -5,6 +5,7 @@
 
 .title {
     font-size: 30px;
+    cursor: pointer;
   }
   
 .top-menu {
@@ -39,7 +40,7 @@ margin: 40px;
     padding-top: 20px;
 }
 
-.input {
+.search-input {
     border-radius: 2px;
     border: 1px solid #ccc;
     height: 25px;
@@ -55,7 +56,7 @@ margin: 40px;
     margin-left: 20px;
   }
 
-.search-bar {
+  .search-bar {
     position: relative;
     top: 8px;
     right: 30px;
@@ -63,7 +64,7 @@ margin: 40px;
     cursor: pointer;
     z-index: 1;
     color: black;
-}
+  }
 
 .footer {
     height: 150px;
@@ -146,7 +147,6 @@ margin: 40px;
 }
 
 .button{
-
     background-color: green;
     color: white;
 }

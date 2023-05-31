@@ -5,15 +5,18 @@
 
 .title {
     font-size: 30px;
+    cursor: pointer;
+
   }
   
-.top-menu {
+  .top-menu {
     display: inline-flex;
     height: 70px;
     width: 100%;
     font-family: "Impact";
     color: green;
-}
+  }
+  
 
 .login-margin {
     width: 300px;
@@ -35,7 +38,7 @@
     padding-top: 20px;
 }
 
-.input {
+.search-input {
     border-radius: 2px;
     border: 1px solid #ccc;
     height: 25px;
@@ -51,7 +54,7 @@
     margin-left: 20px;
   }
 
-.search-bar {
+  .search-bar {
     position: relative;
     top: 8px;
     right: 30px;
@@ -59,7 +62,7 @@
     cursor: pointer;
     z-index: 1;
     color: black;
-}
+  }
 
 .footer {
     height: 150px;
@@ -101,21 +104,63 @@
 
 .filterCard{
     margin-left: 30px;
-    margin-right: 60px;
-    border:solid 1px;
-    border-radius:20px;
-    border-color: green;
-    background-color: gray;
+    margin-right: 40px;
+    border-radius: 5px;
+    background-color: lightgray;
 }
 
 .div-left{
-    background-color: yellow;
     width: 30%;
 }
 
+.quadras-padding{
+    padding-left: 10px;
+    margin-right: 10px;    
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border:solid 2px;
+    border-radius:20px;
+    border-color: green;
+}
+
+.info-card{
+    padding: 10px;
+    margin-left: 30px;
+    margin-right: 20px;
+    width: 100%;
+}
+
+.moreInfo{
+    background-color: green;
+    color: white;
+    width: 150px;
+    align-self: flex-end;
+}
+
+.desc{
+    height: 100px;
+    width: 100%;
+}
+
+.preco{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.info-card-title{
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .div-right{
-    background-color: blue;
     width: 70%;
+}
+
+.img-card{
+    border-radius:20px;
+    border:solid 2px;
+    border-color: white;
 }
 
 .items{

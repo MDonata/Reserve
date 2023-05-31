@@ -1,11 +1,11 @@
 <div>
     <div class="home-container">
       <div class="top-menu" fxLayoutAlign="space-around center">
-        <div class="title"><span>Reservê</span></div>
+        <div class="title" (click)="homeNavigate()"><span>Reservê</span></div>
         <div> 
-          <input type="text" class="input">
-          <mat-icon class="search-bar">search</mat-icon>
-        </div>
+          <input type="text" [(ngModel)]="searchText" class="search-input">
+          <mat-icon class="search-bar" (click)="searchNavigate()">search</mat-icon>
+      </div>
         <div class="login-margin" fxLayoutGap="74px" fxLayout="row">
           <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
             <mat-icon class="material-icons">person</mat-icon><span>{{ usuario }}</span></span>
@@ -44,15 +44,15 @@
         <div class="div-right">
           <div class="preco-quadra" fxLayout="column">
             <span class="preco">R${{ quadra.precoHora }} a hora</span>
-            <form class="data">
+<!--             <form class="data">
               <label for="in">Check-In:</label>
               <input class="left-margin-30" type="datetime-local" id="in" name="in">
               <br/>
               <br/>
               <label for="out">Check-Out:</label>
               <input class="left-margin-10" type="datetime-local" id="out" name="out">
-            </form>
-            <button mat-raised-button class="button">Alugar</button>
+            </form> -->
+            <button mat-raised-button class="button" (click)="openAgendamentoDialog()">Agendar Horário</button>
           </div>
         </div>
       </div>

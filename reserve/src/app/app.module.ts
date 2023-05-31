@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
-import { CadastroComponent } from './views/cadastro/cadastro.component';
+import { AgendamentoComponent } from './views/agendamento/agendamento.component';
 import { PesquisaComponent } from './views/pesquisa/pesquisa.component';
 import { ReservaComponent } from './views/reserva/reserva.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,6 +22,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReserveApiService } from './services/reserve-api.service';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import {MatSliderModule} from '@angular/material/slider';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    CadastroComponent,
+    AgendamentoComponent,
     PesquisaComponent,
     ReservaComponent,
   ],
@@ -59,7 +61,9 @@ import {MatSliderModule} from '@angular/material/slider';
     MatInputModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatSliderModule
+    MatSliderModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [ReserveApiService],
   bootstrap: [AppComponent],

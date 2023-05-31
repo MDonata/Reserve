@@ -36,8 +36,10 @@ export class ReserveApiService {
   }
 
   //Quadra
-  getQuadrasList(): Observable<any[]>{
-    return this.http.get<any>(this.reserveApiUrl + '/quadras');
+  getQuadrasList(searchData?: any): Observable<any[]>{
+    return this.http.get<any>(this.reserveApiUrl + '/quadras', {
+      params: searchData,
+    });
   }
 
   postQuadra(data:any){

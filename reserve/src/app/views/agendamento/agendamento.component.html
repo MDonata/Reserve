@@ -1,0 +1,41 @@
+<div>
+    <div class="container" fxLayout="row" fxLayout="row">
+        <div class="calendar-div">
+            <mat-card>
+                <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)"></mat-calendar>
+            </mat-card>
+        </div>
+        <div class="horarios-div horario-card" [formGroup]="toppings">
+            <p class="horario-border"><mat-checkbox formControlName="1">{{ getEnumValue(1) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="2">{{ getEnumValue(2) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="3">{{ getEnumValue(3) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="4">{{ getEnumValue(4) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="5">{{ getEnumValue(5) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="6">{{ getEnumValue(6) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="7">{{ getEnumValue(7) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="8">{{ getEnumValue(8) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="9">{{ getEnumValue(9) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="10">{{ getEnumValue(10) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="11">{{ getEnumValue(11) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="12">{{ getEnumValue(12) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="13">{{ getEnumValue(13) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="14">{{ getEnumValue(14) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="15">{{ getEnumValue(15) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="16">{{ getEnumValue(16) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="17">{{ getEnumValue(17) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="18">{{ getEnumValue(18) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="19">{{ getEnumValue(19) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="20">{{ getEnumValue(20) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="21">{{ getEnumValue(21) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="22">{{ getEnumValue(22) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="23">{{ getEnumValue(23) }}</mat-checkbox></p>
+            <p class="horario-border"><mat-checkbox formControlName="24">{{ getEnumValue(24) }}</mat-checkbox></p>
+        </div>
+    </div>
+    <div class="width-100" fxLayout="row">
+        <span class="preco poppins-font">Total: R${{ calculaPreco() }}</span>
+        <div class="button-div">
+            <button mat-raised-button class="agenda-button" (click)="confirmaAgendamento()">Agendar</button>
+        </div>
+    </div>
+</div>

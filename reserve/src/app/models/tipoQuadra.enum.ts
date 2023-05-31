@@ -8,4 +8,7 @@ export enum TipoQuadra {
     'Quadra de Basquete' = 7,
     'Pista de Corrida' = 8,
     'Quadra de Vôlei' = 9,
+    'Quadra de Tênis' = 10,
+    'Mesa de Ping Pong' = 11,
+    'Piscina esportiva' = 12,
 }

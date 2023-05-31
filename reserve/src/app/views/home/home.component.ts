@@ -10,9 +10,10 @@ import { LoginComponent } from '../login/login.component';
 import { ReserveApiService } from 'src/app/services/reserve-api.service';
 import { Observable, lastValueFrom } from 'rxjs';
 import { Quadra } from 'src/app/models/quadra.model';
-import { TipoQuadra } from 'src/app/models/quadra.model copy';
-import { OptionsArray } from 'src/app/models/options.model';
+import { TipoQuadra } from 'src/app/models/tipoQuadra.enum';
+import { OptionsArray, SliderArray } from 'src/app/models/options.model';
 import { Router } from '@angular/router';
+import { Search } from 'src/app/models/searchData.model';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
   quadrasList: Quadra[] = [];
   gap = 16;
 
+  searchText: string = '';
   usuario?: string;
   carousel = document.getElementById('carousel');
   content = document.getElementById('content');
@@ -33,24 +35,24 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private service: ReserveApiService, public route: Router) {}
 
   mapa: string = 'https://i.blogs.es/09af6a/google_maps/840_560.jpg'
-  arr: string[] = [
-    'https://cdn-icons-png.flaticon.com/512/756/756812.png',
-    'https://cdn-icons-png.flaticon.com/512/3379/3379077.png',
-    'https://cdn-icons-png.flaticon.com/512/1590/1590970.png',
-    'https://cdn-icons-png.flaticon.com/512/195/195559.png',
-    'https://cdn-icons-png.flaticon.com/512/5288/5288453.png',
-    'https://cdn.iconscout.com/icon/free/png-256/basketball-nba-court-ground-olympic-game-sport-6-25652.png',
-    'https://cdn-icons-png.flaticon.com/512/4500/4500081.png',
-    'https://cdn-icons-png.flaticon.com/512/186/186192.png',
-    'https://cdn-icons-png.flaticon.com/512/3787/3787310.png',
-    'https://img.freepik.com/icones-gratis/boliche_318-196431.jpg',
-    'https://cdn-icons-png.flaticon.com/512/566/566283.png',
-    'https://cdn-icons-png.flaticon.com/512/195/195132.png',
-    'https://img.freepik.com/icones-gratis/patim_318-317248.jpg',
+  sliderArray: SliderArray[] = [
+    {path: 'https://cdn-icons-png.flaticon.com/512/756/756812.png', tipo: 10},
+    {path: 'https://cdn-icons-png.flaticon.com/512/3379/3379077.png', tipo: 2},
+    {path: 'https://cdn-icons-png.flaticon.com/512/1590/1590970.png', tipo: 8},
+    {path: 'https://cdn-icons-png.flaticon.com/512/195/195559.png', tipo: 7},
+    {path: 'https://cdn-icons-png.flaticon.com/512/5288/5288453.png', tipo: 6},
+    {path: 'https://cdn.iconscout.com/icon/free/png-256/basketball-nba-court-ground-olympic-game-sport-6-25652.png', tipo: 3},
+    {path: 'https://cdn-icons-png.flaticon.com/512/4500/4500081.png', tipo: 11},
+    {path: 'https://cdn-icons-png.flaticon.com/512/186/186192.png', tipo: 12},
+    {path: 'https://cdn-icons-png.flaticon.com/512/3787/3787310.png', tipo: 0},
+    {path: 'https://img.freepik.com/icones-gratis/boliche_318-196431.jpg', tipo: 0},
+    {path: 'https://cdn-icons-png.flaticon.com/512/566/566283.png', tipo: 0},
+    {path: 'https://cdn-icons-png.flaticon.com/512/195/195132.png', tipo: 0},
+    {path: 'https://img.freepik.com/icones-gratis/patim_318-317248.jpg', tipo: 0}
   ];
   optionsArr: OptionsArray[] = [];
   optionsArr2: OptionsArray[] = [];
-  totalCards: number = this.arr.length;
+  totalCards: number = this.sliderArray.length;
   currentPage: number = 1;
   pagePosition: string = '0%';
   cardsPerPage!: number;
@@ -186,5 +188,29 @@ export class HomeComponent implements OnInit {
     }else{
       this.usuario = undefined;
     }
+  }
+
+  searchNavigate(){
+    if(this.searchText){
+      this.route.navigate(['pesquisa'],{
+        queryParams:{
+          searchText: this.searchText
+        },
+      });
+    }
+  }
+
+  sliderNavigate(tipo: number){
+    if(tipo){
+      this.route.navigate(['pesquisa'],{
+        queryParams:{
+          searchText: TipoQuadra[tipo]
+        },
+      });
+    }
+  }
+
+  homeNavigate(){
+    this.route.navigate(['home'],{});
   }
 }
