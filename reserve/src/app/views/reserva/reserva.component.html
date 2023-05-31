@@ -3,18 +3,58 @@
       <div class="top-menu" fxLayoutAlign="space-around center">
         <div class="title"><span>Reservê</span></div>
         <div> 
-          <input type="text">
+          <input type="text" class="input">
           <mat-icon class="search-bar">search</mat-icon>
         </div>
-        <div class="login-margin" fxLayoutGap="74px">
-          <button class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
-          <button class="impact-text" mat-button (click)="openCadastroDialog()">Cadastre-se</button>
+        <div class="login-margin" fxLayoutGap="74px" fxLayout="row">
+          <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
+            <mat-icon class="material-icons">person</mat-icon><span>{{ usuario }}</span></span>
+          <button *ngIf="!usuario" class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
+          <button class="impact-text" mat-button (click)="openCadastroDialog()">{{ usuario ? 'Logout' : 'Cadastre-se' }}</button>
         </div>
       </div>
-      <div class="reserva-imagens" fxLayoutGap="20px">
-       <!--  <img [src]="imagens[0]" width="600" height="400"/>
-        <img [src]="imagens[1]" width="300" height="200"/>
-        <img [src]="imagens[2]" width="300" height="200"/> -->
+      <div class="reserva-imagens" fxLayoutGap="20px" fxLayout="row" fxLayoutAlign="center center">
+        <img [src]="quadra.imgPrincipal" width="600" height="400"/>
+        <div>
+          <div fxLayout="row" fxLayoutGap="20px">
+            <img *ngIf="imagens[0]" [src]="imagens[0]" width="300" height="190"/>
+            <img *ngIf="imagens[1]" [src]="imagens[1]" width="300" height="190"/>
+          </div>
+          <br/>
+          <div fxLayout="row" fxLayoutGap="20px">
+            <img *ngIf="imagens[2]" [src]="imagens[2]" width="300" height="190"/>
+            <img *ngIf="imagens[3]" [src]="imagens[3]" width="300" height="190"/>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" class="div-info">
+        <div class="div-left" fxLayout="column">
+          <div fxLayout="column">
+            <span class="title-quadra">{{ title }}</span>
+            <span>{{ quadra.endereco }}</span>
+          </div>
+          <div class="info" fxLayout="column">
+            <span>{{ quadra.descricao }}</span>
+            <div class="items" fxLayout="column" fxLayoutGap="20px">
+              <span class="subtitle">O que esse lugar oferece?</span>
+              <span *ngFor="let i of itensArray">{{ i }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="div-right">
+          <div class="preco-quadra" fxLayout="column">
+            <span class="preco">R${{ quadra.precoHora }} a hora</span>
+            <form class="data">
+              <label for="in">Check-In:</label>
+              <input class="left-margin-30" type="datetime-local" id="in" name="in">
+              <br/>
+              <br/>
+              <label for="out">Check-Out:</label>
+              <input class="left-margin-10" type="datetime-local" id="out" name="out">
+            </form>
+            <button mat-raised-button class="button">Alugar</button>
+          </div>
+        </div>
       </div>
       <div class="footer" fxLayout="row">
         <div class="footer-logo">Reservê</div>

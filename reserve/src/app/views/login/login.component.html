@@ -4,7 +4,7 @@
             <span class="title">Reservê</span>
             <span class="sub-title poppins-font">Bem-vindo!</span>
             <span class="poppins-font">{{ data.isCadastro ? 'Acesse sua conta' : 'Ainda não possui conta?' }}</span>
-            <button mat-stroked-button class="login-button">{{ data.isCadastro ? 'ENTRAR' : 'CADASTRE-SE' }}</button>
+            <button mat-stroked-button class="login-button" (click)="changePopUp()">{{ data.isCadastro ? 'ENTRAR' : 'CADASTRE-SE' }}</button>
         </div>
     </div>
     <div class="campos"  fxLayoutAlign="center center">
@@ -13,18 +13,18 @@
             <div class="input-fields" fxLayout="column">      
                 <mat-form-field *ngIf="data.isCadastro">
                     <mat-label>Nome</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="nome">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Email</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="email">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Senha</mat-label>
-                    <input matInput>
+                    <input type="password" matInput [(ngModel)]="senha">
                 </mat-form-field>
             </div>
-            <button mat-stroked-button class="cadastro-button">{{ data.isCadastro ? 'CADASTRAR' : 'ENTRAR' }}</button>
+            <button mat-stroked-button class="cadastro-button" (click)="logarCadastrar()">{{ data.isCadastro ? 'CADASTRAR' : 'ENTRAR' }}</button>
         </div>
     </div>
 </div>

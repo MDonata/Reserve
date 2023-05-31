@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -18,6 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon'
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ReserveApiService } from './services/reserve-api.service';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 @NgModule({
@@ -47,14 +51,17 @@ import { MatIconModule } from '@angular/material/icon'
     HttpClientModule,
     MatCardModule,
     MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatSliderModule
   ],
-  providers: [],
+  providers: [ReserveApiService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

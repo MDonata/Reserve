@@ -6,9 +6,11 @@
         <input type="text">
         <mat-icon class="search-bar">search</mat-icon>
       </div>
-      <div class="login-margin" fxLayoutGap="74px">
-        <button class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
-        <button class="impact-text" mat-button (click)="openCadastroDialog()">Cadastre-se</button>
+      <div class="login-margin" fxLayoutGap="74px"  fxLayout="row">
+        <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
+          <mat-icon class="material-icons">person</mat-icon><span>{{ usuario }}</span></span>
+        <button *ngIf="!usuario" class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
+        <button class="impact-text" mat-button (click)="openCadastroDialog()">{{ usuario ? 'Logout' : 'Cadastre-se' }}</button>
       </div>
     </div>
     <div class="container" #container>
@@ -55,7 +57,7 @@
     </div>
     <div class="options-card-title">Perto de Você:</div>
     <div class="options-card" fxLayoutGap="30px">
-      <span class="imgTitle" *ngFor="let i of optionsArr; let index = index">
+      <span class="imgTitle" *ngFor="let i of optionsArr; let index = index" (click)="showReserva(i.id)">
         <img class="option-card" [src]="i.path" />
         <span class="imageTitle">{{ i.title }}</span>
       </span>

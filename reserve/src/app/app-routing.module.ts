@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './views/login/login.component';
 import { HomeComponent } from './views/home/home.component';
 import { ReservaComponent } from './views/reserva/reserva.component';
+import { CadastroComponent } from './views/cadastro/cadastro.component';
+import { PesquisaComponent } from './views/pesquisa/pesquisa.component';
 
 // For menu child routes, pass the father's title as data
 const routes: Routes = [
@@ -14,6 +15,14 @@ const routes: Routes = [
     path: 'reserva',
     component: ReservaComponent,
   },
+  {
+    path: 'cadastro',
+    component: CadastroComponent,
+  },
+  {
+    path: 'pesquisa',
+    component: PesquisaComponent,
+  }
 ];
 
 @NgModule({

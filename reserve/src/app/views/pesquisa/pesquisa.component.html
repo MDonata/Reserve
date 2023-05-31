@@ -1,1 +1,82 @@
-<p>pesquisa works!</p>
+<div>
+    <div class="home-container">
+        <div class="top-menu" fxLayoutAlign="space-around center">
+            <div class="title"><span>Reservê</span></div>
+            <div> 
+              <input type="text" class="input">
+              <mat-icon class="search-bar">search</mat-icon>
+            </div>
+            <div class="login-margin" fxLayoutGap="74px" fxLayout="row">
+              <span *ngIf="usuario" class="impact-text" fxLayoutAlign="center center center">
+                <mat-icon class="material-icons">person</mat-icon><span>{{ usuario }}</span></span>
+              <button *ngIf="!usuario" class="impact-text" mat-button (click)="openLoginDialog()">Login</button>
+              <button class="impact-text" mat-button (click)="openCadastroDialog()">{{ usuario ? 'Logout' : 'Cadastre-se' }}</button>
+            </div>
+          </div>
+          <div fxLayout="row" class="div-info">
+            <div class="div-left" fxLayout="column">
+              <div class="filterCard" fxLayout="column">
+                <div class="items poppins-font" fxLayout="column" fxLayoutGap="20px">
+                    <mat-form-field>
+                        <mat-label>Estado</mat-label>
+                        <select matNativeControl>
+                            <option value="mg">Minas Gerais</option>
+                            <option value="sp">São Paulo</option>
+                            <option value="es">Espírito Santo</option>
+                            <option value="rj">Rio de Janeiro</option>
+                        </select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Cidade</mat-label>
+                        <select matNativeControl>
+                            <option value="bh">Belo Horizonte</option>
+                            <option value="sl">Santa Luzia</option>
+                        </select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Tipo de Quadra</mat-label>
+                        <select matNativeControl>
+                            <option value="1">Futsal</option>
+                            <option value="2">Poliesportiva</option>
+                            <option value="3">Futebol</option>
+                            <option value="3">Vôlei</option>
+                        </select>
+                    </mat-form-field>
+                    <span>Preço máx e min</span>
+                    <span>{{sliderStart}}</span>
+                    <span>{{sliderEnd}}</span>
+                    <mat-slider min="0" max="1000">
+                        <input value="0" matSliderStartThumb [(ngModel)]="sliderStart">
+                        <input value="800" matSliderEndThumb [(ngModel)]="sliderEnd">
+                    </mat-slider>
+                </div>
+              </div>
+            </div>
+            <div class="div-right">
+              <div class="" fxLayout="column">
+              </div>
+            </div>
+          </div>
+          <div class="footer" fxLayout="row">
+            <div class="footer-logo">Reservê</div>
+            <div class="footers-divs" fxLayout="row">
+              <div class="footer-div" fxLayout="column">
+                <span class="footer-div-title">Início</span>
+                <span>Home</span>
+                <span>Quadras</span>
+              </div>
+              <div class="footer-div" fxLayout="column">
+                <span class="footer-div-title">Sobre nós</span>
+                <span>+Informações</span>
+                <span>Contato</span>
+                <span>GitHub</span>
+              </div>
+              <div class="footer-div" fxLayout="column">
+                <span class="footer-div-title">Desenvolvedores</span>
+                <span>Marcela</span>
+                <span>Bruno</span>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

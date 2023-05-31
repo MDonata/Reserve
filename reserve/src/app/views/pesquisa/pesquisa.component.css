@@ -1,0 +1,131 @@
+.home-container {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.title {
+    font-size: 30px;
+  }
+  
+.top-menu {
+    display: inline-flex;
+    height: 70px;
+    width: 100%;
+    font-family: "Impact";
+    color: green;
+}
+
+.login-margin {
+    width: 300px;
+    font-size: 22px;
+}
+
+.impact-text{
+    font-family: "Impact";
+    color: green;
+    font-size: 22px;
+}
+
+.search-field{
+    width: 500px;
+}
+
+.data{
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.input {
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    height: 25px;
+    padding: 5px;
+    width: 500px;
+  }
+
+  .left-margin-10{
+    margin-left: 10px;
+  }
+
+  .left-margin-30{
+    margin-left: 20px;
+  }
+
+.search-bar {
+    position: relative;
+    top: 8px;
+    right: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+    color: black;
+}
+
+.footer {
+    height: 150px;
+    background-color: green;
+    width: 100%;
+}
+
+.footer-logo{
+    width: 40%;
+    font-family: "Impact";
+    font-size: 40px;
+    color: white;
+    padding-top: 40px;
+    padding-left: 100px;
+
+}
+
+.footers-divs{
+    width: 60%; 
+}
+
+.footer-div{
+    color: white;
+    padding-top: 30px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.footer-div-title{
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.div-info{
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.filterCard{
+    margin-left: 30px;
+    margin-right: 60px;
+    border:solid 1px;
+    border-radius:20px;
+    border-color: green;
+    background-color: gray;
+}
+
+.div-left{
+    background-color: yellow;
+    width: 30%;
+}
+
+.div-right{
+    background-color: blue;
+    width: 70%;
+}
+
+.items{
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+mat-slider {
+    width: 300px;
+  }

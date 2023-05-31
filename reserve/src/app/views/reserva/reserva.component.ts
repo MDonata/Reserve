@@ -1,88 +1,105 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
-/* import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery-9';
- */
+import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import { ActivatedRoute } from '@angular/router';
+import { Quadra } from 'src/app/models/quadra.model';
+import { ReserveApiService } from 'src/app/services/reserve-api.service';
+import { Imagem } from 'src/app/models/imagem.model';
+
 @Component({
   selector: 'app-reserva',
   templateUrl: './reserva.component.html',
   styleUrls: ['./reserva.component.css']
 })
 export class ReservaComponent implements OnInit {
-  /* galleryOptions: NgxGalleryOptions[] = [];
-  galleryImages: NgxGalleryImage[] = []; */
+  imagens: string[] = [];
 
-  imagens: string[] = [
-    'https://www.silvergold.com.br/imagens/informacoes/aluguel-quadra-futsal-preco-03.jpg',
-    'https://www.silvergold.com.br/imagens/informacoes/aluguel-quadra-futsal-preco-04.jpg',
-    'https://www.silvergold.com.br/imagens/informacoes/aluguel-quadra-futsal-preco-05.jpg',
-  ];
+  usuario?: string;
+  title: string = '';
+  quadra: Quadra = new Quadra();
+  itensArray: string[] = [];
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private ActivatedRoute: ActivatedRoute, private service: ReserveApiService) { }
 
   ngOnInit(): void {
-    /* this.galleryOptions = [
-      {
-          width: '600px',
-          height: '400px',
-          thumbnailsColumns: 4,
-          imageAnimation: NgxGalleryAnimation.Slide
-      },
-      // max-width 800
-      {
-          breakpoint: 800,
-          width: '100%',
-          height: '600px',
-          imagePercent: 80,
-          thumbnailsPercent: 20,
-          thumbnailsMargin: 20,
-          thumbnailMargin: 20
-      },
-      // max-width 400
-      {
-          breakpoint: 400,
-          preview: false
+    this.checarLogin();
+    this.ActivatedRoute.queryParams.subscribe(async (params) => {
+      if(params){
+        this.title = params['title'];
+        this.quadra = {
+          id: params['id'],
+          id_Fornecedor: params['id_fornecedor'],
+          estado: params['estado'],
+          cidade: params['cidade'],
+          precoHora: params['preco'],
+          tipo: params['tipo'],
+          descricao: params['descricao'],
+          endereco: params['endereco'],
+          items: params['itens'],
+          imgPrincipal: params['imgPrincipal'],
+        }
+        this.itensArray = params['itens']?.split(', ');
+        this.getImages(params['id']);
       }
-  ];
-
-  this.galleryImages = [
-      {
-          small: 'assets/1-small.jpg',
-          medium: 'assets/1-medium.jpg',
-          big: 'assets/1-big.jpg'
-      },
-      {
-          small: 'assets/2-small.jpg',
-          medium: 'assets/2-medium.jpg',
-          big: 'assets/2-big.jpg'
-      },
-      {
-          small: 'assets/3-small.jpg',
-          medium: 'assets/3-medium.jpg',
-          big: 'assets/3-big.jpg'
-      }
-  ]; */
+    });
   }
 
+  getImages(id: number|string){
+    this.service.getImagensListById(id).subscribe(data => { 
+      data.forEach((img: Imagem) => {
+        this.imagens.push(img.link);
+      });
+    });
+  }
+
+  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
+    // Only highligh dates inside the month view.
+    if (view === 'month') {
+      const date = cellDate.getDate();
+
+      // Highlight the 1st and 20th day of each month.
+      return date === 1 || date === 20 ? 'example-custom-date-class' : '';
+    }
+
+    return '';
+  };
+
   openLoginDialog(){
-    this.dialog.open(LoginComponent, {
+    const dialogRef = this.dialog.open(LoginComponent, {
       data: { isCadastro: false },
       height: '450px',
       width: '800px',
     });
 
-    /* dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    }); */
-  }
-
-  openCadastroDialog(){
-    this.dialog.open(LoginComponent, {
-      data: { isCadastro: true },
-      height: '450px',
-      width: '800px',
+    dialogRef.afterClosed().subscribe(result => {
+      this.checarLogin();
     });
   }
 
+  openCadastroDialog(){
+    if(!this.usuario){
+      const dialogRef = this.dialog.open(LoginComponent, {
+        data: { isCadastro: true },
+        height: '450px',
+        width: '800px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.checarLogin();
+      });
+    }else{
+      localStorage.removeItem('usuario');
+      localStorage.clear();
+      this.checarLogin();
+    }
+  }
+
+  checarLogin(){
+    let user = localStorage.getItem('usuario');
+    if(user){
+      this.usuario = user;
+    }else{
+      this.usuario = undefined;
+    }
+  }
 }

@@ -7,6 +7,12 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { ReserveApiService } from 'src/app/services/reserve-api.service';
+import { Observable, lastValueFrom } from 'rxjs';
+import { Quadra } from 'src/app/models/quadra.model';
+import { TipoQuadra } from 'src/app/models/quadra.model copy';
+import { OptionsArray } from 'src/app/models/options.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +20,17 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  quadrasList: Quadra[] = [];
   gap = 16;
 
+  usuario?: string;
   carousel = document.getElementById('carousel');
   content = document.getElementById('content');
   next = document.getElementById('next');
   prev = document.getElementById('prev');
   width = this.carousel?.offsetWidth;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private service: ReserveApiService, public route: Router) {}
 
   mapa: string = 'https://i.blogs.es/09af6a/google_maps/840_560.jpg'
   arr: string[] = [
@@ -40,42 +48,8 @@ export class HomeComponent implements OnInit {
     'https://cdn-icons-png.flaticon.com/512/195/195132.png',
     'https://img.freepik.com/icones-gratis/patim_318-317248.jpg',
   ];
-  optionsArr = [
-    {
-      path: 'https://ecrie.com.br/sistema/conteudos/imagem/g_119_2_3_15022023204129.jpeg',
-      title: 'Quadra de Futebol',
-    },
-    {
-      path: 'https://www.recoma.com.br/blog/wp-content/uploads/2023/02/quadra-de-futsal-qual-o-melhor-piso-esportivo.jpg',
-      title: 'Quadra de Poliesportiva',
-    },
-    {
-      path: 'https://psdovidro.com.br/wp-content/uploads/2015/10/estudio-3.jpg',
-      title: 'Salão de Dança',
-    },
-    {
-      path: 'https://www.adec.com.br/admin/image/reserva_area/9/42lg.jpg',
-      title: 'Quadra de Vôlei de Areia',
-    },
-  ];
-  optionsArr2 = [
-    {
-      path: 'https://media.imperatriz.ma.gov.br/N8hB0ccJumWbIFR4WaXquGgCLAg=/750x0/novo.imperatriz.ma.gov.br/media/site/content/article/WhatsApp_Image_2021-01-28_at_16.52.32.jpeg',
-      title: 'Quadra de Badminton',
-    },
-    {
-      path: 'https://www.sescpr.com.br/wp-content/uploads/2020/11/20201001_173756.jpg',
-      title: 'Quadra de Basquete',
-    },
-    {
-      path: 'https://resinsa.com.br/wp-content/uploads/Foto-8-%E2%80%93-Pista-de-atletismo-Sandwich-System.png',
-      title: 'Pista de Corrida',
-    },
-    {
-      path: 'https://www.pardinisport.com.br/img/servicos/quadra-de-volei.jpg',
-      title: 'Quadra de Vôlei',
-    },
-  ];
+  optionsArr: OptionsArray[] = [];
+  optionsArr2: OptionsArray[] = [];
   totalCards: number = this.arr.length;
   currentPage: number = 1;
   pagePosition: string = '0%';
@@ -99,8 +73,34 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
     this.cardsPerPage = this.getCardsPerPage();
     this.initializeSlider();
+    this.checarLogin();
+  }
+
+  async loadData(){
+    this.service.getQuadrasList().subscribe(data => { 
+      this.quadrasList = data;
+      this.quadrasList.forEach((quadra: Quadra) => {
+        let title = TipoQuadra[quadra.tipo];
+        let img = quadra.imgPrincipal;
+        if(this.optionsArr.length < 4){
+          this.optionsArr.push({
+            id: quadra.id,
+            path: img ? img : '',
+            title: title,
+          });
+        }else if(this.optionsArr2.length < 4){
+          this.optionsArr2.push({
+            id: quadra.id,
+            path: img ? img : '',
+            title: title,
+          });
+        }
+      });
+      console.log(this.optionsArr);
+    });
   }
 
   initializeSlider() {
@@ -128,24 +128,63 @@ export class HomeComponent implements OnInit {
     }px)`;
   }
 
+  showReserva(id: string | number){
+    let quadra = this.quadrasList.find(q => q.id == id);
+    console.log(quadra);
+    if(quadra){
+      this.route.navigate(['reserva'],{
+        queryParams:{
+          id: quadra.id,
+          id_fornecedor: quadra.id_Fornecedor,
+          title: TipoQuadra[quadra.tipo],
+          preco: quadra.precoHora,
+          estado: quadra.estado,
+          cidade: quadra.cidade,
+          tipo: quadra.tipo,
+          descricao: quadra.descricao,
+          endereco: quadra.endereco,
+          itens: quadra.items,
+          imgPrincipal: quadra.imgPrincipal,
+        },
+      });
+    }
+  }
+
   openLoginDialog(){
-    this.dialog.open(LoginComponent, {
+    const dialogRef = this.dialog.open(LoginComponent, {
       data: { isCadastro: false },
       height: '450px',
       width: '800px',
     });
 
-    /* dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    }); */
+    dialogRef.afterClosed().subscribe(result => {
+      this.checarLogin();
+    });
   }
 
   openCadastroDialog(){
-    this.dialog.open(LoginComponent, {
-      data: { isCadastro: true },
-      height: '450px',
-      width: '800px',
-    });
+    if(!this.usuario){
+      const dialogRef = this.dialog.open(LoginComponent, {
+        data: { isCadastro: true },
+        height: '450px',
+        width: '800px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.checarLogin();
+      });
+    }else{
+      localStorage.removeItem('usuario');
+      localStorage.clear();
+      this.checarLogin();
+    }
+  }
+
+  checarLogin(){
+    let user = localStorage.getItem('usuario');
+    if(user){
+      this.usuario = user;
+    }else{
+      this.usuario = undefined;
+    }
   }
 }
