@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Quadra } from 'src/app/models/quadra.model';
 import { ReserveApiService } from 'src/app/services/reserve-api.service';
 import { Imagem } from 'src/app/models/imagem.model';
+import { AgendamentoComponent } from '../agendamento/agendamento.component';
 
 @Component({
   selector: 'app-reserva',
@@ -19,8 +20,13 @@ export class ReservaComponent implements OnInit {
   title: string = '';
   quadra: Quadra = new Quadra();
   itensArray: string[] = [];
+  searchText: string = '';
 
-  constructor(public dialog: MatDialog, private ActivatedRoute: ActivatedRoute, private service: ReserveApiService) { }
+
+  constructor( public route: Router,
+    public dialog: MatDialog,
+    private ActivatedRoute: ActivatedRoute,
+    private service: ReserveApiService) { }
 
   ngOnInit(): void {
     this.checarLogin();
@@ -101,5 +107,31 @@ export class ReservaComponent implements OnInit {
     }else{
       this.usuario = undefined;
     }
+  }
+
+  searchNavigate(){
+    if(this.searchText){
+      this.route.navigate(['pesquisa'],{
+        queryParams:{
+          searchText: this.searchText
+        },
+      });
+    }
+  }
+
+  openAgendamentoDialog(){
+    const dialogRef = this.dialog.open(AgendamentoComponent, {
+      data: { quadraId: this.quadra.id, precoHora: this.quadra.precoHora },
+      height: '590px',
+      width: '800px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.checarLogin();
+    });
+  }
+
+  homeNavigate(){
+    this.route.navigate(['home'],{});
   }
 }
