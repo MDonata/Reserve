@@ -10,7 +10,7 @@ import { Usuario } from '../models/usuario.model';
 })
 export class ReserveApiService {
 
-  readonly reserveApiUrl = "https://localhost:7188/api";
+  readonly reserveApiUrl = "https://localhost:7024/api";
 
   constructor(private http:HttpClient) { }
 
